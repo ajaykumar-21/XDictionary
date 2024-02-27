@@ -29,7 +29,7 @@ function App() {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Enter search term"
+          placeholder="Search for a word..."
         />
         <button onClick={handleSearch}>Search</button>
         <h4>Definition:</h4>
