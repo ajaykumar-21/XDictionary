@@ -14,6 +14,10 @@ function App() {
   const [searchResult, setSearchResult] = useState("");
 
   const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      setSearchResult("Word not found in the dictionary.");
+      return;
+    }
     const lowerSearchTerm = searchTerm.toLowerCase();
     const word = dictionary.find(
       (entry) => entry.word.toLowerCase() === lowerSearchTerm
@@ -29,12 +33,13 @@ function App() {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search for a word..."
+          placeholder="Enter search term"
         />
         <button onClick={handleSearch}>Search</button>
-        <h4>Definition:</h4>
       </div>
-      <div>{searchResult && <p>{searchResult}</p>}</div>
+      <div>
+        <p>Definition: {searchResult}</p>
+      </div>
     </div>
   );
 }
