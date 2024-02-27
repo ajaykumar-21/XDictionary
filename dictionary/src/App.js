@@ -10,29 +10,29 @@ function App() {
     { word: "State", meaning: "An object that stores data for a component." },
   ]);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState("");
 
-  const handleSearch = (e) => {
-    if (!searchTerm.trim()) {
+  const handleSearch = () => {
+    if (!search.trim()) {
       setSearchResult("Word not found in the dictionary.");
       return;
     }
-    const lowerSearchTerm = searchTerm.toLowerCase();
+    const lowerSearch = search.toLowerCase();
     const word = dictionary.find(
-      (entry) => entry.word.toLowerCase() === lowerSearchTerm
+      (entry) => entry.word.toLowerCase() === lowerSearch
     );
     setSearchResult(word ? word.meaning : "Word not found in the dictionary.");
   };
 
   return (
     <div>
-      <h1>XDictionary</h1>
+      <h1>Dictionary App</h1>
       <div>
         <input
           type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for a word..."
         />
         <button onClick={handleSearch}>Search</button>
